@@ -4,7 +4,7 @@ set nocompatible "开启兼容模式，必须放在最开始
 set go= "设置界面风格 gui option
 colo candy "设置配色
 "set encoding=utf-8 "设置文件编码
-"set fileencodings=utf-8,gbk
+set fileencodings=utf-8,gbk
 set expandtab "使用空格代替tab
 set tabstop=4 "4个空格
 set shiftwidth=4 "自动缩进的宽度
