@@ -1,61 +1,55 @@
-set nocompatible "¿ªÆô¼æÈİÄ£Ê½£¬±ØĞë·ÅÔÚ×î¿ªÊ¼
+ï»¿set nocompatible "å¼€å¯å…¼å®¹æ¨¡å¼ï¼Œå¿…é¡»æ”¾åœ¨æœ€å¼€å§‹
 
 
-set go= "ÉèÖÃ½çÃæ·ç¸ñ gui option
-colo candy "ÉèÖÃÅäÉ«
-syntax on "´ò¿ªÓï·¨¸ßÁÁ
-set encoding=utf-8 "ÉèÖÃÎÄ¼ş±àÂë
+set go= "è®¾ç½®ç•Œé¢é£æ ¼ gui option
+colo candy "è®¾ç½®é…è‰²
+syntax on "æ‰“å¼€è¯­æ³•é«˜äº®
+set encoding=utf-8 "è®¾ç½®æ–‡ä»¶ç¼–ç 
 set fileencodings=utf-8,gbk
-set expandtab "Ê¹ÓÃ¿Õ¸ñ´úÌætab
-set tabstop=4 "4¸ö¿Õ¸ñ
-set shiftwidth=4 "×Ô¶¯Ëõ½øµÄ¿í¶È
-set number "ÉèÖÃÏÔÊ¾ĞĞºÅ
-"set showtabline=1 "¶à¸ö±êÇ©Ê±ÏÔÊ¾±êÇ©À¸£¬2±íÊ¾×ÜÊÇÏÔÊ¾£¬0±íÊ¾×Ü²»ÏÔÊ¾
-"set lines=200 columns=2000 "ÉèÖÃ´°¿ÚÏÔÊ¾µÄĞĞÊıºÍÁĞÊı
-set guifont=Consolas:h12 "ÉèÖÃ×ÖÌåºÍ´óĞ¡
+set expandtab "ä½¿ç”¨ç©ºæ ¼ä»£æ›¿tab
+set tabstop=4 "4ä¸ªç©ºæ ¼
+set shiftwidth=4 "è‡ªåŠ¨ç¼©è¿›çš„å®½åº¦
+set number "è®¾ç½®æ˜¾ç¤ºè¡Œå·
+"set showtabline=1 "å¤šä¸ªæ ‡ç­¾æ—¶æ˜¾ç¤ºæ ‡ç­¾æ ï¼Œ2è¡¨ç¤ºæ€»æ˜¯æ˜¾ç¤ºï¼Œ0è¡¨ç¤ºæ€»ä¸æ˜¾ç¤º
+"set lines=200 columns=2000 "è®¾ç½®çª—å£æ˜¾ç¤ºçš„è¡Œæ•°å’Œåˆ—æ•°
+set guifont=Consolas:h12 "è®¾ç½®å­—ä½“å’Œå¤§å°
 
-set clipboard=unnamed "ÈÃVimºÍWin¹²ÓÃ¼ôÌù°å
+set clipboard=unnamed "è®©Vimå’ŒWinå…±ç”¨å‰ªè´´æ¿
 
 
-"vim7.1ÔÚwindowsÏÂµÄ±àÂëÉèÖÃ
-if has("win32")
- set fileencoding=chinese
-else
- set fileencoding=utf-8
-endif
-"½â¾ö²Ëµ¥ÂÒÂë
+"è§£å†³èœå•ä¹±ç 
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
-"½â¾öconsleÊä³öÂÒÂë
+"è§£å†³consleè¾“å‡ºä¹±ç 
 language messages zh_CN.utf-8
 
 
-"µ÷ÓÃ²å¼ş
+"è°ƒç”¨æ’ä»¶
 call pathogen#infect()
 
 
-"ÉèÖÃ²»½¨Á¢±¸·İÎÄ¼ş
+"è®¾ç½®ä¸å»ºç«‹å¤‡ä»½æ–‡ä»¶
 if has("vms")
 	set nobackup		" do not keep a backup file, use versions instead
 "else
 "	set backup		" keep a backup file
 endif
 
-"É¾³ıWindows½áÊø·û ^M
+"åˆ é™¤Windowsç»“æŸç¬¦ ^M
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
-"×î´ó»¯´°¿Ú
+"æœ€å¤§åŒ–çª—å£
 au GUIEnter * call libcallnr("vimtweak.dll", "EnableMaximize", 1) 
-"×Ô¶¯Í¸Ã÷
+"è‡ªåŠ¨é€æ˜
 au GUIEnter * call libcallnr("vimtweak.dll", "SetAlpha", 220) 
-"¸ü¸ÄÍ¸Ã÷¶ÈµÄ¿ì½İ¼ü  
+"æ›´æ”¹é€æ˜åº¦çš„å¿«æ·é”®  
 map <M-8> <Esc>:call libcallnr("vimtweak.dll", "SetAlpha", 180) <CR>  
 map <M-9> <Esc>:call libcallnr("vimtweak.dll", "SetAlpha", 230) <CR>  
 map <M-0> <Esc>:call libcallnr("vimtweak.dll", "SetAlpha", 255) <CR>  
 
 
 "source $VIMRUNTIME/vimrc_example.vim
-"¿ªÆô¶ÔwindowµÄÖ§³Ö
+"å¼€å¯å¯¹windowçš„æ”¯æŒ
 source $VIMRUNTIME/mswin.vim
 behave mswin
 
