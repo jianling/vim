@@ -4,7 +4,7 @@ set nocompatible "开启兼容模式，必须放在最开始
 set go= "设置界面风格 gui option
 colo candy "设置配色
 syntax on "打开语法高亮
-"set encoding=utf-8 "设置文件编码
+set encoding=utf-8 "设置文件编码
 set fileencodings=utf-8,gbk
 set expandtab "使用空格代替tab
 set tabstop=4 "4个空格
@@ -14,9 +14,27 @@ set number "设置显示行号
 "set lines=200 columns=2000 "设置窗口显示的行数和列数
 set guifont=Consolas:h12 "设置字体和大小
 
+set clipboard=unnamed "让Vim和Win共用剪贴板
+
+
+"vim7.1在windows下的编码设置
+if has("win32")
+ set fileencoding=chinese
+else
+ set fileencoding=utf-8
+endif
+"解决菜单乱码
+source $VIMRUNTIME/delmenu.vim
+source $VIMRUNTIME/menu.vim
+"解决consle输出乱码
+language messages zh_CN.utf-8
+
+
 "调用插件
 call pathogen#infect()
 
+
+"设置不建立备份文件
 if has("vms")
 	set nobackup		" do not keep a backup file, use versions instead
 "else
@@ -41,27 +59,3 @@ map <M-0> <Esc>:call libcallnr("vimtweak.dll", "SetAlpha", 255) <CR>
 source $VIMRUNTIME/mswin.vim
 behave mswin
 
-set diffexpr=MyDiff()
-function MyDiff()
-  let opt = '-a --binary '
-  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-  let arg1 = v:fname_in
-  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-  let arg2 = v:fname_new
-  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-  let arg3 = v:fname_out
-  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-  let eq = ''
-  if $VIMRUNTIME =~ ' '
-    if &sh =~ '\<cmd'
-      let cmd = '""' . $VIMRUNTIME . '\diff"'
-      let eq = '"'
-    else
-      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-    endif
-  else
-    let cmd = $VIMRUNTIME . '\diff'
-  endif
-  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
-endfunction
