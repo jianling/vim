@@ -16,6 +16,7 @@ set guifont=Consolas:h12 "设置字体和大小
 
 set clipboard=unnamed "让Vim和Win共用剪贴板
 
+set statusline=%F%m%r\ %l行\ %p%%       "定制状态栏
 
 "=====================================
 "           设置自动补全
