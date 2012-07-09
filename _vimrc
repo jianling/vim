@@ -16,6 +16,10 @@ set guifont=Consolas:h12 "设置字体和大小
 
 set clipboard=unnamed "让Vim和Win共用剪贴板
 
+set cindent  "自动缩进
+
+set laststatus=2    "始终显示状态栏
+set statusline=%F%m%r\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [pos=%l,\ %c]\ [%p%%]\ [LINE=%L]       "定制状态栏
 
 "=====================================
 "           设置自动补全
@@ -88,3 +92,15 @@ map <M-0> <Esc>:call libcallnr("vimtweak.dll", "SetAlpha", 255) <CR>
 source $VIMRUNTIME/mswin.vim
 behave mswin
 
+
+
+
+
+
+
+
+"快捷跳转到项目目录 !表示强制替换
+command! GoMagic cd F:\tangram\MagicCube
+command! GoBase cd F:\tangram\Tangram-base
+command! GoComponent cd F:\tangram\Tangram-component
+command! GoTangram cd F:\tangram\tangram
